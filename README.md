@@ -208,17 +208,42 @@ Later, we will see how to emulate a class in Javascript that will be used to cre
 
 ## LAB
 
-__Create a couple of Cars in the lib/cars.js file. Each Car will have a Make, model and year. The make property of a car will be a property were the value is an object literal defined elsewhere in the file lib/makes.js.__
+Implement "Honest Tom's Used Car Lot" using object literals. __Do all your work in the cars_object_literal branch__
 
-__The Make will also have a home address property defined in the file lib/addresses.js.__
+_The cars_object_literal_done branch has a completed version of this lab if you get stuck_.
+
+* Create a couple addresses in lib/addresses.js. 
+	* Properties are street, city, state and country.  
+	* Methods are display. This returns a string.  	 
+* Create a couple of car makers in lib/makers.js  
+	* Properties are name, established date and address (use one of the addresses created above for this property).  
+	* Methods are display. This returns a string.  
+
+* Create a couple of cars in lib/cars.js 
+	* Properties are model, year, price and make (use one of the makes created above for this property).  
+	* Methods are display. This returns a string.  
+
+* Create One car lot in lib/car_lot.js 
+	* Properties are name and an array of cars.
+	* Methods are:
+		* addCar(car). This will add a car to the lot.
+		* display. This returns a string. 
+		* totalValue. This return the total value of all the cars in the lot.
+
+* Log the cars in the lot to the chrome console usiing console.log.  
+* Log the totalValue of all the cars in the lot to the chrome console.
 
 _Note: you will have to create a cars.html that will use each of the above js files_
 
 ```
  ...
- <script src='lib/addresses.js'>
- <script src='lib/makes.js'>
- <script src='lib/cars.js'>
+ <body>
+      <h3>Car Lot</h3>
+      <script src='lib/addresses.js'> </script>
+      <script src='lib/makers.js'> </script>
+      <script src='lib/cars.js'> </script>
+      <script src='lib/car_lot.js'> </script>
+  </body>
  ... 
 ```
  
@@ -307,10 +332,8 @@ console.log(jill.describe());
 
 
 ## LAB
-__Create a couple of Cars using the factory pattern in the lib/car_factory.js. Each Car will have a Make, model and year. The Make property of a car will be a property were the value is an object also created by a factory defined elsewhere in the file lib/make_factory.js.__
 
-__The Make will also have a home address property that is also created with a factory defined in the file lib/address_factory.js.__
-
+Redo the Car Lot Lab above using the Factory pattern.  
 
 ### The Constructor Function Pattern.
 
