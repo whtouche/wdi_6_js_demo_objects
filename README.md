@@ -306,17 +306,23 @@ __Create a file lib/object_factory.js with the below code and reference it from 
 
 
 ```
+ // Person Factory
  var createPerson = function(name, age) {
- // create an object literal from the arguments and 
- // return it.
+
+  // This method is private it is NOT exposed outside 
+  // the createPerson function.
+  var display =  function(){
+    return this.name + " is " + this.age + " years old";
+  };
+
+ // create an object literal return it.
  return {
    name: name,
    age: age,
-   describe: function(){
-	return this.name + " is " + this.age + " years old";
-   }
+   describe: display  // use the private display method
   };
  };
+
  var joe = createPerson("joe", 23);
  var jill = createPerson("jill", 32);
 
