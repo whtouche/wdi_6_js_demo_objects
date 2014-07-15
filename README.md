@@ -22,7 +22,7 @@ We are going to use ECMAScript Version 5. There are a lot of new features coming
 
 [ECMAScript 5 Compatability](http://kangax.github.io/compat-table/es5/)
 
-[ECMAScript 5 Compatability](http://kangax.github.io/compat-table/es6/)
+[ECMAScript 6 Compatability](http://kangax.github.io/compat-table/es6/)
 
 ## Primitives
 Unlike Ruby, in Javascript everything is __NOT__ an Object. Some values a so basic they don't require the overhead and complexity that are built into Objects. 
@@ -170,7 +170,7 @@ __Inspect joe and jill in Chrome.__
 Here we are pointing the the joe object literal's describe property at another function.
 
 
-__ Append the below code to lib/simple_address.js.__
+__Append the below code to lib/simple_address.js.__
 
 ```
 // Can change the describe function later, at runtime.
@@ -260,7 +260,7 @@ __Step through lib/stored_by.js and notice the difference between stored by valu
 
 ## Object Creation Patterns.
 
-The problem with Object Literals is that they can get very tedious. For example, if we have to create a new object literal for each Person and there are many peoople. 
+The problem with Object Literals is that they can get very tedious. For example, if we have to create a new object literal for each Person and there are many people. 
 
 Or I may want to add a property or change a method for a person then I MUST do this for every single person in the app!
 
@@ -309,7 +309,7 @@ console.log(jill.describe());
 ## LAB
 __Create a couple of Cars using the factory pattern in the lib/car_factory.js. Each Car will have a Make, model and year. The Make property of a car will be a property were the value is an object also created by a factory defined elsewhere in the file lib/make_factory.js.__
 
-__The Make will also have a home address property that is also created with a factory defined in the file lib/address.js.__
+__The Make will also have a home address property that is also created with a factory defined in the file lib/address_factory.js.__
 
 
 ### The Constructor Function Pattern.
@@ -374,7 +374,7 @@ When you access a property, or method, on an Object Javascript will:
 
 
 ## LAB
-__Create a couple of Cars using the Constructor function in the lib/car.js. Each Car will have a Make, model and year. The Make property of a car will be a property were the value is an object also created by a constructor function elsewhere in the file lib/make.js.__
+__Create a couple of Cars using the Constructor function defined in the lib/car.js. Each Car will have a Make, model and year. The Make property of a car will be a property were the value is an object also created by a constructor function elsewhere in the file lib/make.js.__
 
 __The Make will also have a home address property that is also created with a constructor function defined in the file lib/address.js.__
 
