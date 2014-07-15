@@ -339,7 +339,7 @@ console.log(jill.describe());
 
 ## LAB
 
-Redo the Car Lot Lab above using the Factory pattern.  
+Redo the Car Lot Lab above using the Factory pattern. __Do all your work in the cars_factory_pattern branch__
 
 ### The Constructor Function Pattern.
 
@@ -404,10 +404,7 @@ When you access a property, or method, on an Object Javascript will:
 
 
 ## LAB
-__Create a couple of Cars using the Constructor function defined in the lib/car.js. Each Car will have a Make, model and year. The Make property of a car will be a property were the value is an object also created by a constructor function elsewhere in the file lib/make.js.__
-
-__The Make will also have a home address property that is also created with a constructor function defined in the file lib/address.js.__
-
+Redo the Car Lot Lab above using Constructor Functions. __Do all your work in the cars_constructor_function branch.__
 
 ### Object.create
 
