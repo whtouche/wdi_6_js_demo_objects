@@ -363,6 +363,8 @@ What is that prototype property?.
 
 Every Object will have a prototype property. It will point to another object that we used to look up properties. 
 
+Initially, the object being pointed to will be an empty object, {}. You can set a property of a prototype.
+
 Javascript uses the prototype method to implement property/method lookup and inheritance.
 
 When you access a property, or method, on an Object Javascript will:
@@ -370,7 +372,6 @@ When you access a property, or method, on an Object Javascript will:
 1. Look for the property, which may be a method, on the object.
 2. Look for the property in the object's prototype.
 3. Recursively, look for each property in the successive _parent_ prototypes.
-
 
 
 ## LAB
