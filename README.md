@@ -325,29 +325,46 @@ console.log(jill.describe());
 
 Whats happening when we call _new_ on a Constructor function?
 
-1. A new object literal is created for the new object and it's pointed to by the _this_ pointer.
-2. Another new object literal is created and pointed to by the prototype property.
-3. The body of the Constructor Function is executed.
-4. The _this_ pointer is implicitly returned. Unless you explicitly return something else.
+1. A new object literal, {}, is created for the new object.  
 
-__Break in the debugger after we create joe. Look at the proto property.__
+2. The object's _this_ pointer will be set to point to this new object literal.  
 
-What is that prototype property?.
+3. Another new object literal, {}, is created and pointed to by the _Constuctor Function's_ prototype property. So Person.prototype points to {}.  
+
+4. The body of the Constructor Function is executed. Using the _this_ pointer to set properties.  
+
+5. The _this_ pointer is implicitly returned. Unless you explicitly return something else.  
+ 	  _Remember this is pointing to the object literal created in step 1_.   
+ 	  
+6. The object literal created in step 1 has an internal __proto__ property that points the object literal created in step 3 and pointed to by Person.prototype.
+
+
+__Break in the debugger after we create joe. Look at the `` __proto__ ``. property.__  
 
 
 ##### Property Lookup and the Prototype.
 
-Every Object will have a prototype property. It will point to another object that we used to look up properties. 
+Every object created with a Constructor Function will have a ``__proto__`` property. It will point to the _same object_ pointed to by the Constructor Function's prototype property.
 
-Initially, the object being pointed to will be an empty object, {}. You can set a property of a prototype.
 
-Javascript uses the prototype method to implement property/method lookup and inheritance.
+Javascript MAY use this ``__proto__`` pointer to lookup properties and methods.
 
-When you access a property, or method, on an Object Javascript will:
+When you access a property, or method, on a js object:
 
-1. Look for the property, which may be a method, on the object.
-2. Look for the property in the object's prototype.
-3. Recursively, look for each property in the successive _parent_ prototypes.
+1. Look for the property, which may be a method, on the object itself.
+
+	If found then __done__.
+	Else goto 2.  
+	
+2. Look for the property in the object pointed to by this object's ``__proto__`` property.  
+
+	If found then __done__.
+	Else goto 3.  
+
+
+3. Recursively, repeat step 2 for each object in the prototype chain until you reach the build in Object's prototype.   
+
+	Error if not found  
 
 
 ## LAB
