@@ -150,6 +150,42 @@ console.log(joe.describe(false));
 
 ```
 
+### Prototypical Inheritence
+
+Each object will have an internal ``__proto__`` property that can point to another object. 
+
+This is used to lookup a property or method on an object. 
+
+By setting this property we can _simulate_ object inheritences.
+
+___Create a file lib/simple_prototype.js with the below code and reference it from index.html.__
+
+```
+var person = {
+    type: 'person',
+    sayHi: function(msg){
+      return this.name + " says " + msg;
+    }
+};
+
+// Create an Object literal representing one person.
+var joe = {
+  name: "Joe Smoe",
+  age: 23,
+  // Property value is a function
+  describe: function(){
+    return this.name + " is " + this.age + " years old";
+  }
+};
+
+console.log("Hey " + joe.name + " are you really " + joe['age'] + " years old?");
+
+debugger
+joe.__proto__ = person;
+
+console.log(joe.sayHi("hey there"));
+```
+
 ### Use Object Literals for objects that are only created once.
 
 What if we want to create a lot of people? 
