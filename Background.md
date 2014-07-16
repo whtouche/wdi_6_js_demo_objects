@@ -18,6 +18,49 @@ We are going to use ECMAScript Version 5. There are a lot of new features coming
 
 [ECMAScript 6 Compatability](http://kangax.github.io/compat-table/es6/)
 
+## Learn about strict mode and use when you can.
+
+Strict mode will catch more errors, like mistakenly creating globals inside a function when not using var. Helps javascript to adhere to the Principle of Least Surprise.
+
+* "use script" at top of file or at top of function declaration.  
+* some environments do not enforce strict mode.  
+* Don't combine strict and non-strict mode files.  
+* Can be a problem for utils that combing files, like the Rails asset pipeline.  
+	* Solution may be to wrap all combined files in an immediately invoked function.  
+
+[John Resig Strict Mode](http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/)
+
+[MDN Strict Model](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode)
+
+[Underhanded Javascipt](https://leanpub.com/underhandedjavascript)
+## Avoid eval()
+
+It's evil, thats all just bad.
+
+
+## Always use === and !==
+
+Avoids knowing complex type coercion rules for equality when using double equals, ==. 
+
+* == applies confusing set of implicit coercions when args are different types.  
+* === does *not* apply coercions.  
+
+## Single var Pattern for Functions.
+
+* Provides a single place to look for all the local variables needed by the function.  
+* Prevents logical errors when a variable is used  before it’s defined (see “Hoisting)  
+* Helps you remember to declare variables and therefore minimize globals.  
+* Is less code (to type and to transfer over the wire)  
+
+Looks like: 
+
+```
+function func() {
+  var a = 1, b = 2, sum = a + b, myobject = {}, i, j;
+  // function body...
+ }
+```
+
 ## Primitives
 Unlike Ruby, in Javascript everything is __NOT__ an Object. Some values a so basic they don't require the overhead and complexity that are built into Objects. 
 
@@ -49,6 +92,8 @@ Some of the javascript primitives have corresponding objects, i.e. wrappers. We 
 * [RegExp](http://goo.gl/6e7TJ)
  
 [Built-in Objects](http://goo.gl/jvqc2d)
+
+__Don't add methods to built-in Objects__
 
 ## Reference Data Type and Primitive Data Types
 One of the main differences between reference data types, Objects, and primitive data types is reference data type’s value is stored as a reference, it is not stored directly on the variable, as a value, as the primitive data types are.
