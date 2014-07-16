@@ -206,6 +206,31 @@ Use Object literals for instances that will exist only once, Singletons, in your
 
 Later, we will see how to emulate a class in Javascript that will be used to creates instances, objects, of something.
 
+### Using Object Literals to create a Namespace.
+
+Javascript namespaces are used to disambiguate names in an application. This is so that names in an application do not conflict.
+
+Typically, name conflict may happen when using a third-party library or plug-in.
+
+_We will use namespaces later when we create objects._
+
+```
+// create a namespace for this PersonApp 
+var PersonApp = PersonApp || {};
+
+// Namespace an object literal
+PersonApp.joe = { name: 'joe', age: 23 };
+
+// Namespace a Factory 
+PersonApp.createPerson = function(){ ... };
+var joe = PersonApp.createPerson('joe', 23);
+
+// Namespace a Constructor Function
+PersonApp.Person = function Person(){ .. };
+var jill = new PersonApp('jill', 33);
+
+```
+
 ## LAB
 
 Implement "Honest Tom's Used Car Lot" using object literals. __Do all your work in the cars_object_literal branch__
