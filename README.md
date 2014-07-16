@@ -322,49 +322,62 @@ console.log(joe.describe());
 console.log(jill.describe());
 ```
 
+##### Property Lookup and the Prototype.  
 
-Whats happening when we call _new_ on a Constructor function?
-
-1. A new object literal, {}, is created for the new object.  
-
-2. The object's _this_ pointer will be set to point to this new object literal.  
-
-3. Another new object literal, {}, is created and pointed to by the _Constuctor Function's_ prototype property. So Person.prototype points to {}.  
-
-4. The body of the Constructor Function is executed. Using the _this_ pointer to set properties.  
-
-5. The _this_ pointer is implicitly returned. Unless you explicitly return something else.  
- 	  _Remember this is pointing to the object literal created in step 1_.   
- 	  
-6. The object literal created in step 1 has an internal __proto__ property that points the object literal created in step 3 and pointed to by Person.prototype.
+Whats happening when we call _new_ on a Constructor function? Heres some detailed info on what javascript is doing. _Same code as above with javascript implementation notes._
 
 
-__Break in the debugger after we create joe. Look at the `` __proto__ ``. property.__  
+```
+debugger;
+
+// Constructor Function object creation
+// Constructor function is camel cased by convention. 
+var Person = function(name, age){
+  // 4. Create a new object literal, {}.
+  // 5. Set 'this' to point to this new object literal. 
+  // 6. Set the new object literal's internal __proto__ pointer 
+  //    to point to the same object created in Step 2.
+  debugger;
+  this.name = name;
+  this.age = age;
+  // 7. Execute the body of this Constructor Function, Person.
+  // 8. Return the this pointer
+
+};
+// 1.0 Defined a Constructor Function.
+// 1.1 A global variable Person is set to this Constructor Function.
+// 1.2 A new object literal, {}, is created and pointed to by 
+// the Person prototype property. 
+
+Person.prototype = {
+   describe: function(){
+    return this.name + " is " + this.age + " years old";
+   }
+};
+// 2. Replace the object literal pointed to by the Person 
+// prototype property. 
+// 2.1 Define a method, describe, on the Person.property.
+// This will allow all instances of a Person to use the describe method.
+
+// 3. Invoke the Constructor Function to create two instances.
+var joe = new Person('joe', 23), 
+  jill = new Person('jill', 32);
+// 9. Now the joe and jill variables will be pointing to 
+// the this pointers returned from Person Constructor Function.
 
 
-##### Property Lookup and the Prototype.
+console.log(joe.describe());
+// 10. Look in the joe object for the property/method describe. Not found.
+// 11. Look in the object pointed to by joe's __proto__ pointer. Found.
+// 12. Invoke the describe method and set the this pointer for the method 
+// be the joe object.
 
-Every object created with a Constructor Function will have a ``__proto__`` property. It will point to the _same object_ pointed to by the Constructor Function's prototype property.
+console.log(jill.describe());
+// Same as above
 
+```
 
-Javascript MAY use this ``__proto__`` pointer to lookup properties and methods.
-
-When you access a property, or method, on a js object:
-
-1. Look for the property, which may be a method, on the object itself.
-
-	If found then __done__.
-	Else goto 2.  
-	
-2. Look for the property in the object pointed to by this object's ``__proto__`` property.  
-
-	If found then __done__.
-	Else goto 3.  
-
-
-3. Recursively, repeat step 2 for each object in the prototype chain until you reach the build in Object's prototype.   
-
-	Error if not found  
+__Run the above code and look at the Person.prototype and object __proto__ properties.__
 
 
 ## LAB
